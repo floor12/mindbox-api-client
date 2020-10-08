@@ -8,12 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class MindBoxRequestTest extends TestCase
 {
-    /** @var CustomRequest */
+    /** @var TestRequest */
     private $testRequest;
 
     public function setUp()
     {
-        $this->testRequest = new CustomRequest();
+        $this->testRequest = new TestRequest();
     }
 
     public function testSetMode()
@@ -46,5 +46,19 @@ class MindBoxRequestTest extends TestCase
         $deviceUUID = md5(time());
         $this->testRequest->setDeviceUUID($deviceUUID);
         $this->assertEquals($deviceUUID, $this->testRequest->getDeviceUUID());
+    }
+
+    public function testSetBody()
+    {
+        $testBody = ['test' => ['some' => 'data']];
+        $this->testRequest->setBody($testBody);
+        $this->assertEquals($testBody, $this->testRequest->getBody());
+    }
+
+    public function testSetOperationName()
+    {
+        $operationName = 'testOperationName';
+        $this->testRequest->setOperationName($operationName);
+        $this->assertEquals($operationName, $this->testRequest->getOperationName());
     }
 }

@@ -2,7 +2,7 @@
 
 
 use floor12\MindBox\MindBoxClient;
-use floor12\MindBox\Requests\MindBoxRequest;
+use floor12\MindBox\MindBoxRequest;
 
 class CheckCustomerExampleRequest extends MindBoxRequest
 {

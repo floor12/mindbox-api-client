@@ -6,7 +6,6 @@ namespace floor12\MindBox;
 
 use floor12\MindBox\Exceptions\EmptyApiEndPointException;
 use floor12\MindBox\Exceptions\EmptyApiKeyException;
-use floor12\MindBox\Requests\MindBoxRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -24,7 +23,7 @@ class MindBoxClient
 
     /** @var string */
     private $endpointId;
-    /** @var Client */
+    /** @var ClientInterface */
     private $client;
     /** @var string[] */
     private $headers;

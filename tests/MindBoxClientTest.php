@@ -5,7 +5,6 @@ namespace floor12\MindBox\Tests;
 use floor12\MindBox\Exceptions\EmptyApiEndPointException;
 use floor12\MindBox\Exceptions\EmptyApiKeyException;
 use floor12\MindBox\MindBoxClient;
-use floor12\MindBox\Requests\CustomRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -57,7 +56,7 @@ class MindBoxClientTest extends TestCase
         ]);
 
         // Create  and send MindBox request
-        $request = new CustomRequest($operationName, $body, MindBoxClient::MODE_ASYNCHRONOUS, $deviceUUID);
+        $request = new TestRequest($operationName, $body, MindBoxClient::MODE_ASYNCHRONOUS, $deviceUUID);
 
         $mindBoxClient = new MindBoxClient(
             $mindBoxSecretKey,
