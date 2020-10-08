@@ -19,7 +19,7 @@ class MindBoxClient
     const MODE_SYNCHRONOUS = 1;
     const ASYNC_MINDBOX_API_URL = 'https://api.mindbox.ru/v3/operations/async';
     const SYNC_MINDBOX_API_URL = 'https://api.mindbox.ru/v3/operations/sync';
-    const DEFAULT_HTTP_TIMEOUT = 15;
+    const DEFAULT_HTTP_TIMEOUT = 2;
 
     /** @var string */
     private $endpointId;
@@ -33,6 +33,8 @@ class MindBoxClient
     private $response;
     /** @var Request */
     private $httpRequest;
+    /** @var int */
+    private $httpTimeOut = self::DEFAULT_HTTP_TIMEOUT;
 
     /**
      * @param string $secretKey
@@ -96,7 +98,7 @@ class MindBoxClient
             $this->headers,
             $mindBoxRequest->getBodyAsJson()
         );
-        $this->response = $this->client->send($this->httpRequest, ['timeout' => self::DEFAULT_HTTP_TIMEOUT]);
+        $this->response = $this->client->send($this->httpRequest, ['timeout' => $this->httpTimeOut]);
     }
 
     /**
@@ -113,6 +115,14 @@ class MindBoxClient
     public function getHttpRequest(): Request
     {
         return $this->httpRequest;
+    }
+
+    /**
+     * @param int $httpTimeOut
+     */
+    public function setHttpTimeOut(int $httpTimeOut): void
+    {
+        $this->httpTimeOut = $httpTimeOut;
     }
 
 }
