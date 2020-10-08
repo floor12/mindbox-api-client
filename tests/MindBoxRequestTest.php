@@ -3,16 +3,17 @@
 namespace floor12\MindBox\Tests;
 
 use floor12\MindBox\MindBoxClient;
+use floor12\MindBox\MindBoxRequest;
 use PHPUnit\Framework\TestCase;
 
 class MindBoxRequestTest extends TestCase
 {
-    /** @var TestRequest */
+    /** @var MindBoxRequest */
     private $testRequest;
 
     public function setUp()
     {
-        $this->testRequest = new TestRequest();
+        $this->testRequest = new MindBoxRequest();
     }
 
     public function testSetMode()

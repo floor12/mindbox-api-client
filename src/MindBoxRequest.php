@@ -4,7 +4,7 @@
 namespace floor12\MindBox;
 
 
-abstract class MindBoxRequest
+class MindBoxRequest
 {
     /** @var string */
     protected $operationName;
