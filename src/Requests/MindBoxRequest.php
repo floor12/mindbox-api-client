@@ -64,4 +64,20 @@ abstract class MindBoxRequest
     {
         return $this->mode === MindBoxClient::MODE_ASYNCHRONOUS;
     }
+
+    /**
+     * @param string|null $deviceUUID
+     */
+    public function setDeviceUUID(?string $deviceUUID): void
+    {
+        $this->deviceUUID = $deviceUUID;
+    }
+
+    /**
+     * @param int $mode
+     */
+    public function setMode(int $mode): void
+    {
+        $this->mode = $mode;
+    }
 }

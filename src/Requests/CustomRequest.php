@@ -33,14 +33,6 @@ class CustomRequest extends MindBoxRequest
     }
 
     /**
-     * @param string $deviceUUID
-     */
-    public function setDeviceUUID(string $deviceUUID): void
-    {
-        $this->deviceUUID = $deviceUUID;
-    }
-
-    /**
      * @param array $body
      */
     public function setBody(array $body): void

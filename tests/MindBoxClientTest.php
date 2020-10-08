@@ -1,5 +1,9 @@
 <?php
 
+namespace floor12\MindBox\Tests;
+
+use floor12\MindBox\Exceptions\EmptyApiEndPointException;
+use floor12\MindBox\Exceptions\EmptyApiKeyException;
 use floor12\MindBox\MindBoxClient;
 use floor12\MindBox\Requests\CustomRequest;
 use GuzzleHttp\Client;
@@ -13,6 +17,18 @@ use PHPUnit\Framework\TestCase;
 class MindBoxClientTest extends TestCase
 {
 
+    public function testNoApiKey()
+    {
+        $this->expectException(EmptyApiKeyException::class);
+        new MindBoxClient('', 'test');
+    }
+
+    public function testNoEndpointKey()
+    {
+        $this->expectException(EmptyApiEndPointException::class);
+        new MindBoxClient('key', '');
+    }
+
     public function testRequestSendsSuccess()
     {
         // Prepare test data
@@ -21,6 +37,7 @@ class MindBoxClientTest extends TestCase
         $operationName = 'test.operation';
         $deviceUUID = 'test-device-uuid';
         $body = ['test' => 'body'];
+
         $expectedUri = MindBoxClient::ASYNC_MINDBOX_API_URL . '?' .
             http_build_query([
                 'endpointId' => $mindBoxEndpoint,
@@ -40,12 +57,14 @@ class MindBoxClientTest extends TestCase
         ]);
 
         // Create  and send MindBox request
-        $request = new CustomRequest($operationName, $body, 0, $deviceUUID);
+        $request = new CustomRequest($operationName, $body, MindBoxClient::MODE_ASYNCHRONOUS, $deviceUUID);
+
         $mindBoxClient = new MindBoxClient(
             $mindBoxSecretKey,
             $mindBoxEndpoint,
             $httpClient
         );
+
         $mindBoxClient->sendData($request);
 
 
