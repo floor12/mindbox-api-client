@@ -16,24 +16,6 @@ abstract class MindBoxRequest
     protected $mode = MindBoxClient::MODE_SYNCHRONOUS;
 
     /**
-     * @param string|null $operationName
-     * @param array|null $body
-     * @param int|null $mode
-     * @param string|null $deviceUUID
-     */
-    public function __construct(
-        string $operationName = null,
-        array $body = null,
-        int $mode = null,
-        string $deviceUUID = null)
-    {
-        $this->operationName = $operationName;
-        $this->body = $body;
-        $this->mode = $mode;
-        $this->deviceUUID = $deviceUUID;
-    }
-
-    /**
      * @return string
      */
     public function getOperationName()
