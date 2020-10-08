@@ -3,7 +3,6 @@
 namespace floor12\MindBox\Tests;
 
 use floor12\MindBox\MindBoxClient;
-use floor12\MindBox\Requests\CustomRequest;
 use PHPUnit\Framework\TestCase;
 
 class MindBoxRequestTest extends TestCase
