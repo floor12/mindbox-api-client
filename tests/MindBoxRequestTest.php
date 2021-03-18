@@ -11,7 +11,7 @@ class MindBoxRequestTest extends TestCase
     /** @var MindBoxRequest */
     private $testRequest;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testRequest = new MindBoxRequest();
     }
