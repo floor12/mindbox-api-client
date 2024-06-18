@@ -84,7 +84,7 @@ class MindBoxClient
         $httpRequestParams = [
             'endpointId' => $this->endpointId,
             'operation' => $mindBoxRequest->getOperationName(),
-            'transactionId' => (new Uuid())->toString()
+            'transactionId' => Uuid::uuid4()->toString()
         ];
 
 
