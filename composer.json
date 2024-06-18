@@ -5,6 +5,7 @@
   "require": {
     "php": ">=8.0.0",
     "ext-json": "*",
+    "ramsey/uuid": "*",
     "guzzlehttp/guzzle": "*"
   },
   "require-dev": {

@@ -11,6 +11,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
+use Ramsey\Uuid\Uuid;
 use function GuzzleHttp\Psr7\build_query;
 
 class MindBoxClient
@@ -44,8 +45,8 @@ class MindBoxClient
      * @throws EmptyApiKeyException
      */
     public function __construct(
-        string $secretKey,
-        string $endpointId,
+        string          $secretKey,
+        string          $endpointId,
         ClientInterface $client = null)
     {
         $this->client = $client ?? new Client();
@@ -82,7 +83,8 @@ class MindBoxClient
     {
         $httpRequestParams = [
             'endpointId' => $this->endpointId,
-            'operation' => $mindBoxRequest->getOperationName()
+            'operation' => $mindBoxRequest->getOperationName(),
+            'transactionId' => (new Uuid())->toString()
         ];
 
 
@@ -98,7 +100,7 @@ class MindBoxClient
             $this->headers,
             $mindBoxRequest->getBodyAsJson()
         );
-        $this->response = $this->client->send($this->httpRequest, ['timeout' => $this->httpTimeOut]);
+        $this->response = $this->client->send($this->httpRequest);
     }
 
     /**
