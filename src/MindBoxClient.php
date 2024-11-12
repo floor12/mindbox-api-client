@@ -12,7 +12,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
-use function GuzzleHttp\Psr7\build_query;
 
 class MindBoxClient
 {
@@ -96,7 +95,7 @@ class MindBoxClient
 
         $this->httpRequest = new Request(
             'POST',
-            $baseUrl . '?' . build_query($httpRequestParams),
+            $baseUrl . '?' . http_build_query($httpRequestParams),
             $this->headers,
             $mindBoxRequest->getBodyAsJson()
         );
